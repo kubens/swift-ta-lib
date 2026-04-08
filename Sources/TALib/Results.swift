@@ -10,11 +10,6 @@ public struct IndicatorResult: Sendable, Equatable {
 
   /// Index in the original input series where `values.first` belongs.
   public let beginIndex: Int
-
-  init(values: [Double], beginIndex: Int) {
-    self.values = values
-    self.beginIndex = beginIndex
-  }
 }
 
 /// Result returned by an indicator that produces a single integer output series.
@@ -22,14 +17,10 @@ public struct IndicatorResult: Sendable, Equatable {
 /// This is used mainly by pattern-recognition functions, where values commonly encode
 /// bearish, neutral, or bullish signals.
 public struct IndicatorIntResult: Sendable, Equatable {
+
   /// Calculated integer indicator values.
   public let values: [Int32]
 
   /// Index in the original input series where `values.first` belongs.
   public let beginIndex: Int
-
-  init(values: [Int32], beginIndex: Int) {
-    self.values = values
-    self.beginIndex = beginIndex
-  }
 }

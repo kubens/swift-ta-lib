@@ -211,8 +211,12 @@ struct TAFuncAPIParser {
       case .startTag("Name"): name = nextText(tokens: tokens, idx: &i)
       case .startTag("ShortDescription"): shortDescription = nextText(tokens: tokens, idx: &i)
       case .startTag("Type"): type = nextText(tokens: tokens, idx: &i)
-      case .startTag("Range"): inRange = true; i += 1
-      case .endTag("Range"): inRange = false; i += 1
+      case .startTag("Range"):
+        inRange = true
+        i += 1
+      case .endTag("Range"):
+        inRange = false
+        i += 1
       case .startTag("Minimum") where inRange: minimum = nextText(tokens: tokens, idx: &i)
       case .startTag("Maximum") where inRange: maximum = nextText(tokens: tokens, idx: &i)
       case .startTag("DefaultValue"): defaultValue = nextText(tokens: tokens, idx: &i)

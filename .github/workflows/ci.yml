@@ -17,7 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check formatting
-        run: swift format lint --strict --recursive ./Plugins ./Sources/TALib ./Sources/TACodeGenerator Tests/
+        run: swift format lint --strict --recursive \
+          ./Plugins \
+          ./Sources/TALib \
+          ./Sources/TACodeGenerator \
+          ./Tests
 
   test-macos:
     name: Test · macOS
