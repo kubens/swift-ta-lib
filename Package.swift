@@ -24,6 +24,7 @@ let package = Package(
     .target(
       name: "TALib",
       dependencies: [.target(name: "ta-lib")],
+      plugins: [.plugin(name: "TAGeneratorPlugin")]
     ),
     .target(
       name: "ta-lib",
@@ -56,6 +57,14 @@ let package = Package(
       linkerSettings: [
         .linkedLibrary("m", .when(platforms: [.linux]))
       ]
+    ),
+    .executableTarget(
+      name: "TACodeGenerator"
+    ),
+    .plugin(
+      name: "TAGeneratorPlugin",
+      capability: .buildTool(),
+      dependencies: ["TACodeGenerator"]
     ),
     .testTarget(
       name: "TALibTests",

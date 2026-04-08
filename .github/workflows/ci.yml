@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check formatting
-        run: swift format lint --strict --recursive Sources/ Tests/
+        run: swift format lint --strict --recursive ./Plugins ./Sources/TALib ./Sources/TACodeGenerator Tests/
 
   test-macos:
     name: Test · macOS
@@ -64,6 +64,6 @@ jobs:
         run: |
           set -o pipefail
           xcodebuild test \
-            -scheme swift-ta-lib \
+            -scheme swift-ta-lib-Package \
             -destination '${{ matrix.destination }}' \
             | xcpretty
